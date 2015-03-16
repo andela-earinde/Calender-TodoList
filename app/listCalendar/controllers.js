@@ -1,5 +1,4 @@
-var controllers = angular.module('taskApp.controllers', [ ]);
+app
+    .controller('HomeController', ['$scope', function($scope){
 
-controllers.controller('HomeController', ['$scope', function($scope){
-
-}]);
+    }]);

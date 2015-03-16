@@ -2,8 +2,7 @@ var app = angular.module('taskApp', [
     'ngRoute',
     'ngMaterial',
     'ngAnimate',
-    'ngAria',
-    'taskApp.controllers'
+    'ngAria'
 ]);
 
 app.config(['$routeProvider',
