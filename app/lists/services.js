@@ -1,4 +1,5 @@
-app.factory("listService", ["$localStorage",function(settings, $localStorage){
+angular.module("taskApp")
+    .factory("listService", ["$localStorage",function($localStorage){
 	
 	var listsData = [];
 	$localStorage.lists = {};

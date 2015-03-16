@@ -1,4 +1,5 @@
-app.controller('HomeController', ['$scope', 'listService', function($scope, listService){
+angular.module("taskApp")
+    .controller('HomeController', ['$scope', 'listService', function($scope, listService){
     
     $scope.listName = ""
 	$scope.lists = [];
