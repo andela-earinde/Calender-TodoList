@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "homepage": "https://github.com/andela-earinde/Calender-TodoList",
   "authors": [
-    "Eniola Arinde"
+    "Eniola Arinde",
+    "Nkwocha Udo"
   ],
   "description": "A tasks app",
   "main": "index.html",
@@ -22,9 +23,11 @@
   "dependencies": {
     "angular": "~1.3.14",
     "jquery": "~2.1.3",
-    "angular-ui-router": "~0.2.13",
     "angular-material": "~0.8.3",
     "font-awesome": "~4.3.0",
-    "animate.css": "~3.2.3"
+    "animate.css": "~3.2.3",
+    "ngstorage": "~0.3.0",
+    "angular-mocks": "~1.3.14",
+    "angular-route": "~1.3.14"
   }
 }

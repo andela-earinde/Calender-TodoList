@@ -1,9 +1,11 @@
 var app = angular.module('taskApp', [
     'ngRoute',
-    'ngMaterial',
     'ngAnimate',
-    'ngAria'
+    'ngMaterial',
+    'ngAria',
+    'ngStorage'
 ]);
+
 
 app.config(['$routeProvider',
     function($routeProvider){
@@ -20,7 +22,3 @@ app.config(['$routeProvider',
             });
     }
 ]);
-
-app.constant("settings", {
-    "storageName" : "list"
-});
