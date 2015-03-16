@@ -1,4 +1,4 @@
-<header>
+<header class="animated slideindown">
     <md-toolbar class="md-primary">
         <div class="md-toolbar-tools">
             <span class="md-flex">Calendar Todo List App</span>
@@ -6,51 +6,72 @@
     </md-toolbar>
 </header>
 
-<section layout="row">
-    <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')">
-        <md-content class="md-padding" >
-            <md-list>
-                <md-item ng-repeat="item in lists">
-                    <md-item-content>
-                        <div class="md-tile-left">
-                            <img ng-src="{{item.face}}" class="face" alt="{{item.who}}">
-                        </div>
-                        <div class="md-tile-content">
-                            <h3>{{item.name}}</h3>
-                            <h4>{{item.who}}</h4>
-                            <p>
-                                {{item.notes}}
-                            </p>
-                        </div>
-                    </md-item-content>
-                </md-item>
-            </md-list>
-        </md-content>
+<section class="" layout="row">
+    <md-sidenav class="md-sidenav-left md-whiteframe-z2 sideBar" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')">
+        <div class="top">
+            <label><span>{{listCount}}</span> lists Created</label>
+            <a ng-click="toggleNewListForm()">
+                <span class="fa fa-plus-circle fa-lg"></span>
+            </a>
+            <form ng-show="showNewListForm" ng-class="{'animated bounceIn': showNewListForm}">
+                <md-input-container flex>
+                    <label>list name</label>
+                    <input ng-model="user.firstName" placeholder="List name">
+                </md-input-container>
+                <!--<md-button class="md-raised md-primary">save</md-button>-->
+            </form>
+        </div>
+
+        <div class="lists">
+
+            <ul>
+                <li class="listItem" ng-repeat="item in lists">
+                    <div class="list-name">{{item.name}}</div>
+                    <div class="list-tools">
+                    <a href=""><span class="fa fa-edit"></span></a>
+                    <a href=""><span class="fa fa-check"></span></a>
+                    <a href=""><span class="fa fa-trash"></span></a>
+                    </div>
+                    <div class="clear"></div>
+                </li>
+            </ul>
+
+        </div>
+
     </md-sidenav>
 
-    <md-content flex class="md-padding">
-        <div layout="column" layout-fill layout-align="top center">
-            <p>
-                The left sidenav will 'lock open' on a medium (>=960px wide) device.
-            </p>
-            <div>
-                <md-button ng-click="toggleLeft()"
-                           class="md-primary" hide-gt-md>
-                    Toggle left
-                </md-button>
+    <md-content flex class="taskBoard">
+        <div class="top">
+            <div class="left">
+                <strong><span class="fa fa-list-alt"></span> list name</strong> |
+                46 tasks
             </div>
-            <div>
-                <md-button ng-click="toggleRight()"
-                           class="md-primary">
-                    Toggle right
-                </md-button>
+
+            <div class="right">
+                <form>
+                    <input class="searchBox" type="search" placeholder="search tasks" />
+                </form>
             </div>
+
+            <div class="clear"></div>
+
         </div>
-        <div flex></div>
+
+        <div class="allTasks">
+
+            <div class="note-item">
+                <div class="note-head">
+                    <label class="note-status">completed</label>
+                    <label class="note-date">march 14</label>
+                </div>
+                <div class="note-body">Lorem ipsum dolor sit amet, ne quod novum mei. Sea omnium invenire mediocrem at.</div>
+                <div class="note-tools">
+                    <a href=""><span class="fa fa-trash"></span></a>
+                </div>
+            </div>
+
+        </div>
+
     </md-content>
 
 </section>
-
-<footer>
-
-</footer>
