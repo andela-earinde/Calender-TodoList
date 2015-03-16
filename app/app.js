@@ -10,11 +10,11 @@ app.config(['$routeProvider',
     function($routeProvider){
         $routeProvider.
             when('/', {
-                templateUrl: 'app/views/home.html',
+                templateUrl: 'app/listCalendar/views/home.html',
                 controller: 'HomeController'
             }).
             when('/404', {
-                templateUrl: 'app/views/404.html'
+                templateUrl: 'app/listCalendar/views/404.html'
             }).
             otherwise({
                 redirectTo: '/404'
