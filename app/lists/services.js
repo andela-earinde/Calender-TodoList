@@ -5,7 +5,7 @@ app.factory("listService", ["settings",function(settings){
 	return {
 
 		lists: function() {
-
+            
 		},
 	}
 }]);

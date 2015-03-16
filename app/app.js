@@ -2,7 +2,8 @@ var app = angular.module('taskApp', [
     'ngRoute',
     'ngMaterial',
     'ngAnimate',
-    'ngAria'
+    'ngAria',
+    'ngStorage'
 ]);
 
 app.config(['$routeProvider',
