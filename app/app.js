@@ -20,3 +20,7 @@ app.config(['$routeProvider',
             });
     }
 ]);
+
+app.constant("settings", {
+    "storageName" : "list"
+});
