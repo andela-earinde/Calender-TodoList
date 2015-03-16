@@ -7,4 +7,5 @@ app.controller('HomeController', ['$scope', 'listService', function($scope, list
     $scope.addList = function(name) {
     	listService.add();
     }  
+
 }]);

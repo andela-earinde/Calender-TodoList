@@ -1,22 +1,53 @@
 <header>
-    <md-toolbar class="md-warn">
+    <md-toolbar class="md-primary">
         <div class="md-toolbar-tools">
-            <span class="md-flex">Toolbar: md-warn</span>
+            <span class="md-flex">Calendar Todo List App</span>
         </div>
     </md-toolbar>
 </header>
 
-
 <section layout="row">
-    <div class="listPane" flex="30">
-        left
+    <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')">
+        <md-content class="md-padding" >
+            <md-list>
+                <md-item ng-repeat="item in lists">
+                    <md-item-content>
+                        <div class="md-tile-left">
+                            <img ng-src="{{item.face}}" class="face" alt="{{item.who}}">
+                        </div>
+                        <div class="md-tile-content">
+                            <h3>{{item.name}}</h3>
+                            <h4>{{item.who}}</h4>
+                            <p>
+                                {{item.notes}}
+                            </p>
+                        </div>
+                    </md-item-content>
+                </md-item>
+            </md-list>
+        </md-content>
+    </md-sidenav>
 
-    </div>
-
-    <div class="tasksPane" flex="69">
-
-
-    </div>
+    <md-content flex class="md-padding">
+        <div layout="column" layout-fill layout-align="top center">
+            <p>
+                The left sidenav will 'lock open' on a medium (>=960px wide) device.
+            </p>
+            <div>
+                <md-button ng-click="toggleLeft()"
+                           class="md-primary" hide-gt-md>
+                    Toggle left
+                </md-button>
+            </div>
+            <div>
+                <md-button ng-click="toggleRight()"
+                           class="md-primary">
+                    Toggle right
+                </md-button>
+            </div>
+        </div>
+        <div flex></div>
+    </md-content>
 
 </section>
 
