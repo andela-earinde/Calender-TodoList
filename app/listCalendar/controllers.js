@@ -1,4 +1,4 @@
-app.controller('HomeController', ['$scope', function($scope){
+app.controller('HomeController', ['$scope', 'listService', function($scope, listService){
 
     $scope.showNewListForm = false ;
     $scope.listCount = 20 ;
@@ -7,19 +7,15 @@ app.controller('HomeController', ['$scope', function($scope){
         $scope.showNewListForm = !$scope.showNewListForm;
     };
 
-    $scope.lists = [
+    $scope.listsItems = [
         { name: 'Market' },
         { name: 'School' },
         { name: 'Office' },
         { name: 'shop' }
     ];
 
-}]);
 
-
-app.controller('HomeController', ['$scope', 'listService', function($scope, listService){
-    
-    $scope.listName = ""
+    $scope.listName = "";
 	$scope.lists = [];
 	$scope.listTasks = [];
 
