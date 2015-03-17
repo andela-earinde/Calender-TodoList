@@ -42,5 +42,5 @@ describe("lists.service: list service test", function(){
 		data.edit("firstName", "secondName");
 
 		expect(data.lists()).toEqual(["secondName"]);
-	})
+	});
 });
