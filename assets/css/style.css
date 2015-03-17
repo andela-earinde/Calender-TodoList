@@ -149,11 +149,10 @@
 }
 
 .note-item{
+    position: relative;
     padding: 8px;
     display: inline-block;
     width: 300px;
-    background: #ffffa2;
-    position: relative;
     vertical-align: top;
     font-family: "McLaren",sans-serif;
     overflow: visible;
@@ -167,6 +166,30 @@
     -moz-box-shadow: 0 1px 4px rgba(0,0,0,0.3),0 0 10px rgba(0,0,0,0.1) inset;
     -webkit-box-shadow: 0 1px 4px rgba(0,0,0,0.3),0 0 10px rgba(0,0,0,0.1) inset;
     box-shadow: 0 1px 4px rgba(0,0,0,0.3),0 0 10px rgba(0,0,0,0.1) inset;
+    margin:15px 30px 15px 10px;
+    background-image: url("../img/pinhold.png");
+    background-repeat: no-repeat;
+    background-position: 50% top;
+}
+
+.note-item.normal{
+    background-color: #f6f6f6;
+}
+
+.note-item.high{
+    background-color: #ffffa2;
+}
+
+.note-item .status-completed{
+    color: #25944d;
+}
+
+.note-item .status-pending{
+    color: #f1c40f;
+}
+
+.note-item .status-timedout{
+    color: #c0392b;
 }
 
 .note-item:before, .note-item:after {
@@ -181,10 +204,20 @@
     -moz-box-shadow: 0 15px 10px rgba(0,0,0,0.4);
     -webkit-box-shadow: 0 15px 10px rgba(0,0,0,0.4);
     box-shadow: 0 15px 10px rgba(0,0,0,0.4);
-    -moz-transform: rotate(-3deg);
-    -ms-transform: rotate(-3deg);
-    -webkit-transform: rotate(-3deg);
-    transform: rotate(-3deg);
+    -moz-transform: rotate(-5deg);
+    -ms-transform: rotate(-5deg);
+    -webkit-transform: rotate(-5deg);
+    transform: rotate(-5deg);
+}
+
+.note-item:after{
+    left: auto;
+    right: 12px;
+    -webkit-transform: skew(5deg) rotate(5deg);
+    -moz-transform: skew(5deg) rotate(5deg);
+    -ms-transform: skew(5deg) rotate(5deg);
+    -o-transform: skew(5deg) rotate(5deg);
+    transform: skew(5deg) rotate(5deg);
 }
 
 .note-item .note-head{
@@ -210,4 +243,8 @@
 
 .clear{
     clear: both;
+}
+
+.resetForm{
+    display: none;
 }

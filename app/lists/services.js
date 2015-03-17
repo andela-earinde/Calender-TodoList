@@ -1,13 +1,17 @@
-angular.module("taskApp")
-    .factory("listService", ["$localStorage",function($localStorage){
+app.factory("listService", ["$localStorage",function($localStorage){
 	
 	var listsData = [];
-	$localStorage.lists = {};
-	var list = $localStorage.lists;
-
+    var list;
+    if($localStorage.lists){
+      list = $localStorage.lists
+    }
+    else {
+       list = $localStorage.lists = {};
+    }
 	return {
 
 		lists: function() {
+            listsData = [];
             for(var li in list) {
             	listsData.push(li);
             }
@@ -15,6 +19,7 @@ angular.module("taskApp")
 		},
 
 		add: function(name) {
+            listsData = [];
 			$localStorage.lists[name] = [];
 			for(var li in list) {
 				listsData.push(li);
@@ -22,6 +27,7 @@ angular.module("taskApp")
 		},
 
         remove: function(name) {
+            listsData = [];
             delete $localStorage.lists[name];
 
             for(var li in list) {
@@ -30,6 +36,7 @@ angular.module("taskApp")
         },
         
         edit: function(initName, newName) {
+            listsData = [];
             Object.defineProperty($localStorage.lists, newName,
                 Object.getOwnPropertyDescriptor($localStorage.lists, initName));
 

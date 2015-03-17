@@ -7,17 +7,18 @@
 </header>
 
 <section class="" layout="row">
-    <md-sidenav class="md-sidenav-left md-whiteframe-z2 sideBar" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')">
+    <md-sidenav class="animated slideInLeft md-sidenav-left md-whiteframe-z2 sideBar" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')">
         <div class="top">
             <label><span>{{listCount}}</span> lists Created</label>
             <a ng-click="toggleNewListForm()">
                 <span class="fa fa-plus-circle fa-lg"></span>
             </a>
-            <form ng-show="showNewListForm" ng-class="{'animated bounceIn': showNewListForm}">
+            <form ng-submit="listFormSubmit(newlist,$event)" ng-show="showNewListForm" ng-class="{'animated bounceIn': showNewListForm}">
                 <md-input-container flex>
                     <label>list name</label>
-                    <input ng-model="user.firstName" placeholder="List name">
+                    <input ng-model="newlist.name" placeholder="type and hit enter">
                 </md-input-container>
+                <input type="reset" class="resetForm" />
                 <!--<md-button class="md-raised md-primary">save</md-button>-->
             </form>
         </div>
@@ -25,8 +26,9 @@
         <div class="lists">
 
             <ul>
-                <li class="listItem" ng-repeat="item in listsItems">
-                    <div class="list-name">{{item.name}}</div>
+
+                <li class="listItem" ng-repeat="item in Lists track by $index">
+                    <div class="list-name">{{item}}</div>
                     <div class="list-tools">
                     <a href=""><span class="fa fa-edit"></span></a>
                     <a href=""><span class="fa fa-check"></span></a>
@@ -40,7 +42,7 @@
 
     </md-sidenav>
 
-    <md-content flex class="taskBoard">
+    <md-content flex class="animated fadeIn taskBoard">
         <div class="top">
             <div class="left">
                 <strong><span class="fa fa-list-alt"></span> list name</strong> |
@@ -49,7 +51,7 @@
 
             <div class="right">
                 <form>
-                    <input class="searchBox" type="search" placeholder="search tasks" />
+                    <input class="searchBox" ng-model="search" type="search" placeholder="search tasks" />
                 </form>
             </div>
 
@@ -58,15 +60,14 @@
         </div>
 
         <div class="allTasks">
-
-            <div class="note-item">
+            <div ng-repeat="note in noteItems | filter:search" class="note-item {{note.priority}}">
                 <div class="note-head">
-                    <label class="note-status">completed</label>
+                    <label class="note-status status-{{note.status}}">{{note.status}}</label>
                     <label class="note-date">march 14</label>
                 </div>
-                <div class="note-body">Lorem ipsum dolor sit amet, ne quod novum mei. Sea omnium invenire mediocrem at.</div>
+                <div class="note-body">{{note.content}}</div>
                 <div class="note-tools">
-                    <a href=""><span class="fa fa-trash"></span></a>
+                    <a href=""><span class="fa fa-times"></span></a>
                 </div>
             </div>
 
