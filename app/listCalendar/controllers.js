@@ -32,8 +32,6 @@ app.controller('HomeController', ['$scope', 'listService', '$mdDialog', function
             $scope.toggleNewListForm();
             listService.add(data.name);
             $scope.updateList();
-            /*var result = JSON.parse(localStorage.getItem('ngStorage-lists'));
-            console.log(result);*/
         }
     };
 
