@@ -31,7 +31,7 @@ app.controller('HomeController', ['$scope', 'listService', '$mdDialog', function
             $('.resetForm').click();
             $scope.toggleNewListForm();
             listService.add(data.name);
-            $scope.updateList();
+            $scope.updateList(); 
         }
     };
 
