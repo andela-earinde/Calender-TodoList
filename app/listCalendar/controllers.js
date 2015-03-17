@@ -71,7 +71,7 @@ app.controller('HomeController', ['$scope', 'listService', '$mdDialog', function
     };
 
     $scope.editList = function(initialName, newName) {
-        listService.edit(initialName, newName);    
+        listService.edit(initialName, newName);
     }*/
 
 }]);

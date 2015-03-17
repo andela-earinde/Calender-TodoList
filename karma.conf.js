@@ -21,7 +21,9 @@ module.exports = function(config) {
       "bower_components/ngstorage/ngStorage.js",
       "app/app.js",
       "app/lists/services.js",
-      "app/tests/listsServiceSpec.js"
+      "app/tasks/services.js",
+      "app/tests/listsServiceSpec.js",
+      "app/tests/taskServiceSpec.js"
     ],
 
 
