@@ -18,7 +18,7 @@ app.controller('HomeController', ['$scope', 'listService', '$mdDialog', function
     $scope.showAlert = function(ev) {
 
     };
-
+ 
     $scope.listFormSubmit = function(data,evt){
         if(/\w+\s\w+/.test(data.name)){
             $mdDialog.show(
