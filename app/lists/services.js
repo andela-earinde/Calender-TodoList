@@ -1,12 +1,16 @@
 app.factory("listService", ["$localStorage",function($localStorage){
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> 517618529bae1fdc1c8decab2a01d81204ce20be
     var listsData = [];
     var list;
     if($localStorage.lists){
-      list = $localStorage.lists
+        list = $localStorage.lists
     }
     else {
-       list = $localStorage.lists = {};
+        list = $localStorage.lists = {};
     }
     return {
 
@@ -15,7 +19,11 @@ app.factory("listService", ["$localStorage",function($localStorage){
             for(var li in list) {
                 listsData.push(li);
             }
+<<<<<<< HEAD
             return listsData;        
+=======
+            return listsData;
+>>>>>>> 517618529bae1fdc1c8decab2a01d81204ce20be
         },
 
         add: function(name) {
@@ -34,7 +42,7 @@ app.factory("listService", ["$localStorage",function($localStorage){
                 listsData.push(li);
             }
         },
-        
+
         edit: function(initName, newName) {
             listsData = [];
             Object.defineProperty($localStorage.lists, newName,
