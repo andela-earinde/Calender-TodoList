@@ -26,6 +26,12 @@ angular.module("taskApp")
             else {
                  list.splice(index, index);  
             }
+        },
+
+        edit: function(listname, index, text) {
+            var list = lists[listname];
+
+            list[index].content = text;
         }
     }	
 }]);

@@ -60,4 +60,12 @@ describe("task.tests: tasks service spec", function(){
             expect(task.tasks("firstName")).toEqual([{"mm": "oo"}]);	
 		});
 	});
+
+	it("should edit the content of a task if the edit function is called", function(){
+	    lStore.lists["firstName"] = [{content: "crap"}];
+	    
+	    task.edit("firstName", 0, "going home");
+
+	    expect(task.tasks("firstName")).toEqual([{content: "going home"}]);
+	});
 });
