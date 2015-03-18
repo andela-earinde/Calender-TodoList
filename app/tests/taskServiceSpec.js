@@ -50,5 +50,14 @@ describe("task.tests: tasks service spec", function(){
 
                 expect(task.tasks("firstName")).toEqual([{"crapm": "crap"}]);
 			});
+
+		it("should remove a task in index 0 of a list", function(){
+		    lStore.lists["firstName"] = [{"crapm": "crap"},
+				                              {"mm": "oo"}];
+                
+            task.remove("firstName", 0);
+
+            expect(task.tasks("firstName")).toEqual([{"mm": "oo"}]);	
+		});
 	});
 });
