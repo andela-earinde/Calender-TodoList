@@ -15,10 +15,6 @@ app.controller('HomeController', ['$scope', 'listService', '$mdDialog', function
         $scope.showNewListForm = !$scope.showNewListForm;
     };
 
-    $scope.showAlert = function(ev) {
-
-    };
-
     $scope.listFormSubmit = function(data,evt){
         if(/\w+\s\w+/.test(data.name)){
             $mdDialog.show(
@@ -28,12 +24,21 @@ app.controller('HomeController', ['$scope', 'listService', '$mdDialog', function
                     .targetEvent(evt)
             );
         }else{
-            $('.resetForm').click();
-            $scope.toggleNewListForm();
-            listService.add(data.name);
-            $scope.updateList();
-            /*var result = JSON.parse(localStorage.getItem('ngStorage-lists'));
-            console.log(result);*/
+            var l = $scope.Lists ;
+            console.log(l[data.name]);
+            if($scope.Lists[data.name]){
+                $mdDialog.show(
+                    $mdDialog.alert()
+                        .content('a list with this name already exists!')
+                        .ok('Got it!')
+                        .targetEvent(evt)
+                );
+            }else{
+                $('.resetForm').click();
+                $scope.toggleNewListForm();
+                listService.add(data.name);
+                $scope.updateList();
+            }
         }
     };
 
@@ -46,32 +51,5 @@ app.controller('HomeController', ['$scope', 'listService', '$mdDialog', function
         {priority: 'high', status: 'timedout',  content: 'Lorem ipsum dolor sit amet, whatever dude'},
         {priority: 'normal', status: 'pending',  content: 'Lorem ipsum dolor sit amet, whatever dude'}
     ];
-
-/*
-    $scope.$on('$viewContentLoaded', function(){
-        $scope.updateList();
-    });
-*/
-
-
-  /*  $scope.listName = "";
-	$scope.lists = [];
-	$scope.listTasks = [];
-
-    $scope.getLists = function() {
-        $scope.lists =  listService.lists();
-    };
-
-    $scope.addList = function(name) {
-    	listService.add(name);
-    };
-
-    $scope.removeList = function(name) {
-    	listService.remove(name);
-    };
-
-    $scope.editList = function(initialName, newName) {
-        listService.edit(initialName, newName);
-    }*/
 
 }]);
