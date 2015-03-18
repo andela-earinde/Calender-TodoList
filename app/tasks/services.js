@@ -14,6 +14,18 @@ angular.module("taskApp")
     	add: function(listname, task) {
     		lists[listname].push(task);
     		listTasks = lists[listname];
-    	}
+    	},
+        
+        remove: function(listname, index) {
+            var list = lists[listname];
+
+            if(list.length === 1 || index === 0) {
+                list.shift();
+                listTasks = list
+            }
+            else {
+                 list.splice(index, index);  
+            }
+        }
     }	
 }]);
