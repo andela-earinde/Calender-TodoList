@@ -61,4 +61,12 @@ app.controller('HomeController', ['$scope', 'listService', 'taskService','$mdDia
             taskService.add(listName, task);
         }
 
+        $scope.deleteTask = function(listName, index) {
+            taskService.remove(listName, index);
+        }
+
+        $scope.editTask = function(listName, index, text) {
+            taskService.edit(listName, index, text),
+        }
+
     }]);
