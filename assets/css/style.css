@@ -118,6 +118,12 @@
 
 .taskBoard .top .right{
     float: right;
+    width: 600px;
+}
+
+.taskBoard .top .right .md-fab{
+    margin-top: -10px;
+    float: right;
 }
 
 .taskBoard .allTasks{
@@ -152,7 +158,7 @@
     position: relative;
     padding: 8px;
     display: inline-block;
-    width: 300px;
+    width: 280px;
     vertical-align: top;
     font-family: "McLaren",sans-serif;
     overflow: visible;
@@ -166,7 +172,7 @@
     -moz-box-shadow: 0 1px 4px rgba(0,0,0,0.3),0 0 10px rgba(0,0,0,0.1) inset;
     -webkit-box-shadow: 0 1px 4px rgba(0,0,0,0.3),0 0 10px rgba(0,0,0,0.1) inset;
     box-shadow: 0 1px 4px rgba(0,0,0,0.3),0 0 10px rgba(0,0,0,0.1) inset;
-    margin:15px 30px 15px 10px;
+    margin:15px 20px 15px 10px;
     background-image: url("../img/pinhold.png");
     background-repeat: no-repeat;
     background-position: 50% top;
