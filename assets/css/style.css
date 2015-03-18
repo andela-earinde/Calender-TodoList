@@ -247,6 +247,67 @@
     text-align: right;
 }
 
+.modalView{
+    position: absolute;
+    z-index: 999;
+    right: 0;
+    margin-top: -20px;
+}
+
+.modalView .note-item{
+    background-image: none;
+    background-color: rgba(146, 179, 223, 0.94);
+}
+
+.modalView textarea{
+    width: 100%;
+    height: 120px;
+    border:none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    resize: none;
+    font-family: "McLaren", sans-serif;
+    padding: 10px;
+    font-size: 16px;
+    color: #444444;
+    background: transparent;
+    margin-top: 5px;
+}
+
+.modalView ::-webkit-input-placeholder { /* WebKit browsers */
+    color:    #444444;
+}
+.modalView :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color:    #444444;
+    opacity:  1;
+}
+.modalView ::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color:    #444444;
+    opacity:  1;
+}
+
+.modalView .select{
+    padding-left: 20px;
+    margin-bottom: 15px;
+}
+
+.modalView .date{
+    padding-left: 20px;
+    margin-bottom: 15px;
+}
+
+.modalView small{
+    display: block;
+    text-align: center;
+}
+
+.modalView div:focus{
+    outline: none;
+    border:none;
+    -webkit-outline:none;
+}
+
 .clear{
     clear: both;
 }

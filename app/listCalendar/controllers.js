@@ -1,19 +1,24 @@
-app.controller('HomeController', ['$scope', 'listService', 'taskService','$mdDialog',
-    function($scope, listService, taskService,$mdDialog){
+app.controller('HomeController', ['$rootScope', '$scope', 'listService', 'taskService','$mdDialog',
+    function($rootScope, $scope, listService, taskService,$mdDialog){
 
         $scope.showNewListForm = false ;
+        $scope.showNewTaskForm = false;
         $scope.listCount = 0 ;
-        $scope.Lists = [];
+        $rootScope.Lists = [];
 
         $scope.updateList = function(){
-            $scope.Lists = listService.lists();
-            $scope.listCount = $scope.Lists.length;
+            $rootScope.Lists = listService.lists();
+            $scope.listCount = $rootScope.Lists.length;
         };
 
         $scope.updateList();
 
         $scope.toggleNewListForm = function(){
             $scope.showNewListForm = !$scope.showNewListForm;
+        };
+
+        $scope.toggleNewTaskForm = function(){
+            $scope.showNewTaskForm = !$scope.showNewTaskForm;
         };
 
         $scope.showAlert = function(ev) {
