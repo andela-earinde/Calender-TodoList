@@ -1,9 +1,5 @@
 app.factory("listService", ["$localStorage",function($localStorage){
-<<<<<<< HEAD
-    
-=======
 
->>>>>>> 517618529bae1fdc1c8decab2a01d81204ce20be
     var listsData = [];
     var list;
     if($localStorage.lists){
@@ -12,6 +8,7 @@ app.factory("listService", ["$localStorage",function($localStorage){
     else {
         list = $localStorage.lists = {};
     }
+    
     return {
 
         lists: function() {
@@ -19,11 +16,7 @@ app.factory("listService", ["$localStorage",function($localStorage){
             for(var li in list) {
                 listsData.push(li);
             }
-<<<<<<< HEAD
-            return listsData;        
-=======
             return listsData;
->>>>>>> 517618529bae1fdc1c8decab2a01d81204ce20be
         },
 
         add: function(name) {
