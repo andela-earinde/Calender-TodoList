@@ -1,4 +1,5 @@
-app.controller('HomeController', ['$scope', 'listService', '$mdDialog', function($scope, listService, $mdDialog){
+app.controller('HomeController', ['$scope', 'listService', 'taskService','$mdDialog', 
+                                   function($scope, listService, taskService,$mdDialog){
 
     $scope.showNewListForm = false ;
     $scope.listCount = 0 ;
@@ -19,7 +20,7 @@ app.controller('HomeController', ['$scope', 'listService', '$mdDialog', function
 
     };
  
-    $scope.listFormSubmit = function(data,evt){
+    $scope.listFormSubmit = function(data, evt){
         if(/\w+\s\w+/.test(data.name)){
             $mdDialog.show(
                 $mdDialog.alert()
@@ -51,25 +52,13 @@ app.controller('HomeController', ['$scope', 'listService', '$mdDialog', function
     });
 */
 
+    //task functions for tasks
+    $scope.getTasks = function(listName, task) {
+         taskService.tasks(listName, task);
+    }
 
-  /*  $scope.listName = "";
-	$scope.lists = [];
-	$scope.listTasks = [];
-
-    $scope.getLists = function() {
-        $scope.lists =  listService.lists();
-    };
-
-    $scope.addList = function(name) {
-    	listService.add(name);
-    };
-
-    $scope.removeList = function(name) {
-    	listService.remove(name);
-    };
-
-    $scope.editList = function(initialName, newName) {
-        listService.edit(initialName, newName);
-    }*/
-
+    $scope.addTasks = function(listName, task) {
+        taskService.add(listName, task);
+    }
+ 
 }]);

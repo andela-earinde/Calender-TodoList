@@ -38,5 +38,17 @@ describe("task.tests: tasks service spec", function(){
 
 	    expect(task.tasks("firstName")).toEqual([{"crapm": "crap"},
 	    	                                     {"mm": "oo"}]);	
-	})
+	});
+
+	describe("taskService remove function", function(){
+		it("should remove a task from a list when the remove function is called with the task and index of the list",
+			function(){
+				lStore.lists["firstName"] = [{"crapm": "crap"},
+				                              {"mm": "oo"}];
+                
+                task.remove("firstName", 1);
+
+                expect(task.tasks("firstName")).toEqual([{"crapm": "crap"}]);
+			});
+	});
 });
