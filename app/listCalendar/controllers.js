@@ -95,7 +95,6 @@ app.controller('HomeController', ['$rootScope', '$scope', 'listService', 'taskSe
 
         };
 
-
         //task functions for tasks
         $scope.getTasks = function(listName, task) {
             taskService.tasks(listName, task);

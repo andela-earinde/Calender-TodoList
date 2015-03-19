@@ -1,5 +1,4 @@
 app.factory("listService", ["$localStorage", function($localStorage){
-
     var listsData = [];
     var list;
     if($localStorage.lists){

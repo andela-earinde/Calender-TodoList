@@ -36,8 +36,8 @@ module.exports = function(config) {
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
         
-        'app/lists/service.js': "coverage",
-        'app/tasks/service.js': "coverage"
+        'app/listss/service.js': ["coverage"],
+        'app/taskss/service.js': ["coverage"]
     },
 
 
@@ -67,6 +67,11 @@ module.exports = function(config) {
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
     browsers: ['PhantomJS'],
+
+    coverageReporter: {
+        type: "html",
+        dir: "coverage/"
+    },
 
 
     // Continuous Integration mode
