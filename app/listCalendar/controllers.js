@@ -6,6 +6,7 @@ app.controller('HomeController', ['$rootScope', '$scope', 'listService', 'taskSe
         $scope.currentList = {} ;
         $scope.listCount = 0 ;
         $rootScope.Lists = [];
+        $scope.noteItems = [];
 
         $scope.updateList = function(){
             $rootScope.Lists = listService.lists();
@@ -18,7 +19,9 @@ app.controller('HomeController', ['$rootScope', '$scope', 'listService', 'taskSe
         });
 
         $scope.$on("event:ListSelected", function(event, data){
-            $scope.currentList.name = data.listName ;
+            $scope.currentList.name = data.listName;
+            $scope.noteItems = taskService.tasks(data.listName);
+            $scope.currentList.count = $scope.noteItems.length;
             $scope.$apply();
         });
 
@@ -66,23 +69,27 @@ app.controller('HomeController', ['$rootScope', '$scope', 'listService', 'taskSe
             else if(!data.list){
                 shout('you have to choose a list');
             }
-
             else if(data.date == null){
                 shout('you have to set date');
             }
             else if(!data.priority){
                 shout('you have to set priority');
             }else{
-                taskService.add(data.list,data);
+                var taskData = {
+                    content: data.content,
+                    list: data.list,
+                    date: data.date,
+                    priority: data.priority,
+                    status: 'pending'
+                };
+
+                taskService.add(taskData.list,taskData);
+                taskData = {};
+                $scope.currentList.count = $scope.noteItems.length;
+                angular.element('.resetForm').click();
             }
 
         };
-
-        /*
-         $scope.$on('$viewContentLoaded', function(){
-         $scope.updateList();
-         });
-         */
 
         //task functions for tasks
         $scope.getTasks = function(listName, task) {

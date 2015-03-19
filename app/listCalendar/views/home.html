@@ -39,7 +39,7 @@
         <div class="top">
             <div class="left">
                 <strong><span class="fa fa-list-alt"></span> {{currentList.name | uppercase }}</strong> |
-                46 tasks
+                {{currentList.count}} tasks
             </div>
 
             <div class="right">
@@ -92,13 +92,15 @@
                 </form>
             </div>
 
+
             <div ng-repeat="note in noteItems | filter:search" class="note-item {{note.priority}}">
                 <div class="note-head">
                     <label class="note-status status-{{note.status}}">{{note.status}}</label>
-                    <label class="note-date">march 14</label>
+                    <label class="note-date">{{note.date | date }}</label>
                 </div>
                 <div class="note-body">{{note.content}}</div>
                 <div class="note-tools">
+                    <a href=""><span class="fa fa-check-circle"></span></a>
                     <a href=""><span class="fa fa-times"></span></a>
                 </div>
             </div>
