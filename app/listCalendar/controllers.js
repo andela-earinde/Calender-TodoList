@@ -20,6 +20,7 @@ app.controller('HomeController', ['$rootScope', '$scope', 'listService', 'taskSe
 
 
         $scope.$on("event:ListSelected", function(event, data){
+            console.log("crap");
             $scope.currentList.name = data.listName;
             $scope.noteItems = taskService.tasks(data.listName);
             $scope.currentList.count = $scope.noteItems.length;

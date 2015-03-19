@@ -27,10 +27,13 @@ app.directive('tasks', [ '$rootScope', 'taskService', function($rootScope,taskSe
             var check = el.find('.fa-check-circle');
             var del = el.find('.fa-times');
             var body = el.find('.note-body');
+            var statusBar = el.find('.note-status');
 
             check.on('click', function(e){
                 e.preventDefault();
                 taskService.editUpdate(listName,index);
+                statusBar.text("completed");
+                check.hide();
                 broadcast();
             });
 
