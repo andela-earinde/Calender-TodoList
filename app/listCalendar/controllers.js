@@ -73,12 +73,10 @@ app.controller('HomeController', ['$rootScope', '$scope', 'listService', 'taskSe
             else if(!data.priority){
                 shout('you have to set priority');
             }else{
-                listService.add(data.list,data);
+                taskService.add(data.list,data);
             }
 
         };
-
-        $scope.noteItems = [];
 
         /*
          $scope.$on('$viewContentLoaded', function(){
