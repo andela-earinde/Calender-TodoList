@@ -5,7 +5,7 @@ app.directive('tasks', [ '$rootScope', 'taskService', function($rootScope,taskSe
         templateUrl: 'app/tasks/templates/task-tpl.html',
         link: function(scope, elem, attr){
             scope.priority = attr.priority;
-            scope.date = attr.date;
+            scope.dateObj = attr.date;
             scope.content = attr.content;
             scope.status = attr.status;
             scope.listName = attr.listName;
@@ -23,6 +23,11 @@ app.directive('tasks', [ '$rootScope', 'taskService', function($rootScope,taskSe
             var del = el.find('.fa-times');
             var body = el.find('.note-body');
 
+            check.on('click', function(e){
+                e.preventDefault();
+                //use list service to update
+            });
+
             del.on('click', function(e){
                 e.preventDefault();
                 taskService.remove(listName,index);
@@ -30,7 +35,18 @@ app.directive('tasks', [ '$rootScope', 'taskService', function($rootScope,taskSe
                 broadcast();
             });
 
+            body.on('dblclick', function(el){
+                body.attr('contentEditable',true);
+            });
 
+            body.on('blur', function(){
+                if(body.attr('contentEditable')){
+                    var text = body.text();
+                    body.removeAttr('contentEditable');
+                    taskService.edit(listName,index,text);
+                    broadcast();
+                }
+            });
 
         }
     };

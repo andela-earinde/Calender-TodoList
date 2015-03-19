@@ -83,12 +83,14 @@ app.controller('HomeController', ['$rootScope', '$scope', 'listService', 'taskSe
                     status: 'pending'
                 };
 
+                $scope.currentList.name = taskData.list;
+
                 taskService.add(taskData.list,taskData);
                 taskData = {};
-                $scope.$apply();
-                $scope.noteItems = taskService.tasks(data.list);
+                $scope.noteItems = taskService.tasks($scope.currentList.name);
                 $scope.currentList.count = $scope.noteItems.length;
                 angular.element('.resetForm').click();
+                $scope.toggleNewTaskForm();
             }
 
         };
