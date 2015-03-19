@@ -10,6 +10,11 @@ app.directive('tasks', [ '$rootScope', 'taskService', function($rootScope,taskSe
             scope.status = attr.status;
             scope.listName = attr.listName;
             scope.taskId = attr.taskId;
+            scope.completed = false;
+
+            if(attr.status != 'completed'){
+                scope.completed = true;
+            }
 
             var listName = attr.listName;
             var index = attr.taskId;
@@ -25,16 +30,18 @@ app.directive('tasks', [ '$rootScope', 'taskService', function($rootScope,taskSe
 
             check.on('click', function(e){
                 e.preventDefault();
-                //use list service to update
-                taskService.editUpdate(listName, index);
+                taskService.editUpdate(listName,index);
                 broadcast();
             });
 
             del.on('click', function(e){
                 e.preventDefault();
-                taskService.remove(listName,index);
-                elem.hide();
-                broadcast();
+                var ask = confirm('seriously bro ?');
+                if(ask === true){
+                    taskService.remove(listName,index);
+                    elem.hide();
+                    broadcast();
+                }
             });
 
             body.on('dblclick', function(el){
