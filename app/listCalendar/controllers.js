@@ -12,6 +12,7 @@ app.controller('HomeController', ['$rootScope', '$scope', 'listService', 'taskSe
         };
 
         $scope.$on('valuesUpdated', function() {
+            $scope.$apply();
             $scope.updateList();
             console.log("crap");
         });

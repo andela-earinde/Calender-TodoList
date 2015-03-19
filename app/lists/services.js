@@ -34,6 +34,7 @@ app.factory("listService", ["$localStorage", "$rootScope",function($localStorage
             for(var li in list) {
                 listsData.push(li);
             }
+            $rootScope.$broadcast("valuesUpdated");
             console.log(listsData);
         },
 
@@ -44,8 +45,9 @@ app.factory("listService", ["$localStorage", "$rootScope",function($localStorage
 
             delete $localStorage.lists[initName];
 
-            for(var li in list) {
+            for(var li in $localStorage.lists) {
                 listsData.push(li);
+                console.log("ope");
             }
             
             $rootScope.$broadcast("valuesUpdated");
