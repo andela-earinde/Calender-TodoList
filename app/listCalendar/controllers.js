@@ -18,6 +18,7 @@ app.controller('HomeController', ['$rootScope', '$scope', 'listService', 'taskSe
             $scope.$apply();
         });
 
+
         $scope.$on("event:ListSelected", function(event, data){
             $scope.currentList.name = data.listName;
             $scope.noteItems = taskService.tasks(data.listName);
@@ -61,7 +62,6 @@ app.controller('HomeController', ['$rootScope', '$scope', 'listService', 'taskSe
                         .targetEvent(evt)
                 );
             };
-
 
             if(!data.content || data.content.length < 2){
                 shout('list note must contain text');
