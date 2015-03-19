@@ -1,8 +1,8 @@
 var app = angular.module('taskApp', [
     'ngRoute',
-    //'ngAnimate',
-    //'ngMaterial',
-    //'ngAria',
+    'ngAnimate',
+    'ngMaterial',
+    'ngAria',
     'ngStorage'
 ]);
 
