@@ -1,0 +1,317 @@
+
+.sideBar{
+    background-color: #34495e;
+}
+
+.sideBar .top{
+    display: block;
+    font-family: 'Lato',sans-serif;
+    font-size: 1rem;
+    font-weight: 900;
+    color: white;
+    padding: 18px 1rem;
+    background: #2c3e50;
+    float: left;
+    position: relative;
+    -webkit-box-shadow: 0 10px 6px -6px #1e2c3d;
+    -moz-box-shadow: 0 10px 6px -6px #1e2c3d;
+    box-shadow: 0 10px 6px -6px #1e2c3d;
+}
+
+.sideBar .top label{
+    display: inline-block;
+    float: left;
+}
+
+.sideBar .top label span{
+    display: inline-block;
+    background: #d35400;
+    padding: 4px 3px;
+    border-radius: 5px;
+    width: 30px;
+    text-align: center;
+    font-size: 13px;
+}
+
+.sideBar .top a{
+    color: #ffffff;
+    display: inline-block;
+    float: right;
+    cursor: pointer;
+}
+
+.sideBar form{
+    background: #ffffff;
+    position: absolute;
+    border-radius: 5px;
+    padding: 5px;
+    width: 200px;
+    margin-top: 20px;
+    right: 5px;
+    z-index: 999;
+}
+
+.sideBar form .cancel{
+    float: right;
+}
+
+.sideBar .lists{
+    margin-top: 30px;
+    min-height: 600px;
+    max-height: 600px;
+    overflow-y: auto;
+}
+
+.sideBar .lists ul{
+    list-style: none;
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+}
+
+.sideBar .listItem{
+    display: block;
+    padding: 8px 10px;
+    color: #ecf0f1;
+}
+
+.sideBar .listItem:hover,
+.sideBar .active{
+    background-color: #bdc3c7;
+    color: #d35400;
+    cursor: pointer;
+}
+
+.sideBar .listItem .list-name{
+    float: left;
+    width: 70%;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 19px;
+    padding-left: 20px;
+}
+
+.sideBar .listItem .list-tools{
+    float: right;
+}
+
+.sideBar .listItem .list-tools a{
+    color: #34495e;
+}
+
+.taskBoard{
+    background-image: url("../img/canvas.jpg") !important;
+}
+
+.taskBoard .top{
+    display: block;
+    background-color: #ffffff;
+    height: 58px;
+    padding: 10px 25px;
+    -webkit-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+    -moz-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+    box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+}
+
+.taskBoard .top .left{
+    margin-top: 10px;
+    float: left;
+}
+
+.taskBoard .top .right{
+    float: right;
+    width: 600px;
+}
+
+.taskBoard .top .right .md-fab{
+    margin-top: -10px;
+    float: right;
+}
+
+.taskBoard .allTasks{
+    display: block;
+    min-height: 550px;
+    padding:20px;
+}
+
+.searchBox{
+    padding: 8px;
+    width: 400px;
+    border-radius: 6px;
+    border: 1px solid #7f8c8d;
+    -moz-box-shadow:    inset 0 0 5px #7f8c8d;
+    -webkit-box-shadow: inset 0 0 5px #7f8c8d;
+    box-shadow:         inset 0 0 5px #7f8c8d;
+    background-image: url("../img/searchicon.png");
+    background-repeat: no-repeat;
+    background-position: 8px center;
+    padding-left: 40px;
+    color: #7F8C8D;
+}
+
+.searchBox:focus{
+    border: 1px solid #d35400;
+    -moz-box-shadow:    inset 0 0 5px #d35400;
+    -webkit-box-shadow: inset 0 0 5px #d35400;
+    box-shadow:         inset 0 0 5px #d35400;
+}
+
+.note-item{
+    position: relative;
+    padding: 8px;
+    display: inline-block;
+    width: 280px;
+    vertical-align: top;
+    font-family: "McLaren",sans-serif;
+    overflow: visible;
+    word-wrap: break-word;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    -moz-box-shadow: 0 1px 4px rgba(0,0,0,0.3),0 0 10px rgba(0,0,0,0.1) inset;
+    -webkit-box-shadow: 0 1px 4px rgba(0,0,0,0.3),0 0 10px rgba(0,0,0,0.1) inset;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.3),0 0 10px rgba(0,0,0,0.1) inset;
+    margin:15px 20px 15px 10px;
+    background-image: url("../img/pinhold.png");
+    background-repeat: no-repeat;
+    background-position: 50% top;
+}
+
+.note-item.normal{
+    background-color: #f6f6f6;
+}
+
+.note-item.high{
+    background-color: #ffffa2;
+}
+
+.note-item .status-completed{
+    color: #25944d;
+}
+
+.note-item .status-pending{
+    color: #f1c40f;
+}
+
+.note-item .status-timedout{
+    color: #c0392b;
+}
+
+.note-item:before, .note-item:after {
+    content: "";
+    position: absolute;
+    z-index: -2;
+    bottom: 15px;
+    left: 10px;
+    width: 50%;
+    height: 20%;
+    max-width: 300px;
+    -moz-box-shadow: 0 15px 10px rgba(0,0,0,0.4);
+    -webkit-box-shadow: 0 15px 10px rgba(0,0,0,0.4);
+    box-shadow: 0 15px 10px rgba(0,0,0,0.4);
+    -moz-transform: rotate(-5deg);
+    -ms-transform: rotate(-5deg);
+    -webkit-transform: rotate(-5deg);
+    transform: rotate(-5deg);
+}
+
+.note-item:after{
+    left: auto;
+    right: 12px;
+    -webkit-transform: skew(5deg) rotate(5deg);
+    -moz-transform: skew(5deg) rotate(5deg);
+    -ms-transform: skew(5deg) rotate(5deg);
+    -o-transform: skew(5deg) rotate(5deg);
+    transform: skew(5deg) rotate(5deg);
+}
+
+.note-item .note-head{
+    padding: 5px;
+    font-size: 13px;
+    color: #8e44ad;
+}
+
+.note-item .note-date{
+    display: inline-block;
+    float: right;
+}
+
+.note-item .note-body{
+    display: block;
+    padding: 10px;
+    min-height: 100px;
+}
+
+.note-item .note-tools{
+    text-align: right;
+}
+
+.modalView{
+    position: absolute;
+    z-index: 999;
+    right: 0;
+    margin-top: -20px;
+}
+
+.modalView .note-item{
+    background-image: none;
+    background-color: rgba(146, 179, 223, 0.94);
+}
+
+.modalView textarea{
+    width: 100%;
+    height: 120px;
+    border:none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    resize: none;
+    font-family: "McLaren", sans-serif;
+    padding: 10px;
+    font-size: 16px;
+    color: #444444;
+    background: transparent;
+    margin-top: 5px;
+}
+
+.modalView ::-webkit-input-placeholder { /* WebKit browsers */
+    color:    #444444;
+}
+.modalView :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color:    #444444;
+    opacity:  1;
+}
+.modalView ::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color:    #444444;
+    opacity:  1;
+}
+
+.modalView .select{
+    padding-left: 20px;
+    margin-bottom: 15px;
+}
+
+.modalView .date{
+    padding-left: 20px;
+    margin-bottom: 15px;
+}
+
+.modalView small{
+    display: block;
+    text-align: center;
+}
+
+.modalView div:focus{
+    outline: none;
+    border:none;
+    -webkit-outline:none;
+}
+
+.clear{
+    clear: both;
+}
+
+.resetForm{
+    display: none;
+}

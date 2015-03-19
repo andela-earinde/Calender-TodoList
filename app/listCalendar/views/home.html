@@ -1,0 +1,117 @@
+<header class="animated slideInDown">
+    <md-toolbar class="md-primary">
+        <div class="md-toolbar-tools">
+            <span class="md-flex">Calendar Todo List App</span>
+        </div>
+    </md-toolbar>
+</header>
+
+<section class="" layout="row">
+    <md-sidenav class="animated slideInLeft md-sidenav-left md-whiteframe-z2 sideBar" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')">
+        <div class="top">
+            <label><span>{{listCount}}</span> lists Created</label>
+            <a ng-click="toggleNewListForm()">
+                <span class="fa fa-plus-circle fa-lg"></span>
+            </a>
+            <form ng-submit="listFormSubmit(newlist,$event)" ng-show="showNewListForm" ng-class="{'animated bounceIn': showNewListForm}">
+                <md-input-container flex>
+                    <label>list name</label>
+                    <input ng-model="newlist.name" placeholder="type and hit enter">
+                </md-input-container>
+                <input type="reset" class="resetForm" />
+                <!--<md-button class="md-raised md-primary">save</md-button>-->
+            </form>
+        </div>
+
+        <div class="lists">
+
+            <ul>
+
+                <li class="listItem" ng-repeat="item in Lists track by $index">
+                    <div class="list-name">{{item}}</div>
+                    <div class="list-tools">
+                    <a href=""><span class="fa fa-edit"></span></a>
+                    <a href=""><span class="fa fa-check"></span></a>
+                    <a href=""><span class="fa fa-trash"></span></a>
+                    </div>
+                    <div class="clear"></div>
+                </li>
+            </ul>
+
+        </div>
+
+    </md-sidenav>
+
+    <md-content flex class="animated fadeIn taskBoard">
+        <div class="top">
+            <div class="left">
+                <strong><span class="fa fa-list-alt"></span> list name</strong> |
+                46 tasks
+            </div>
+
+            <div class="right">
+                <form>
+                    <input class="searchBox" ng-model="search" type="search" placeholder="search tasks" />
+
+                    <md-button ng-click="toggleNewTaskForm()" class="md-fab" aria-label="Eat cake">
+                        <span class="fa fa-edit fa-2x"></span>
+                    </md-button>
+                </form>
+
+
+            </div>
+
+            <div class="clear"></div>
+
+        </div>
+
+        <div class="allTasks">
+
+            <div class="modalView" ng-show="showNewTaskForm" ng-class="{'animated slideInRight': showNewTaskForm}">
+                <form ng-submit="newTaskSubmit(data)">
+                    <div class="note-item">
+                        <textarea ng-model="data.content" placeholder="write your shit here!"></textarea>
+
+                        <div class="select">
+                            <md-select ng-model="data.list" placeholder="choose a list to save to">
+                                <md-option ng-repeat="opt in Lists" ng-value="'opt'">{{opt}}</md-option>
+                            </md-select>
+                        </div>
+
+
+                        <div class="date">
+                            <span class="fa fa-calendar"></span>
+                            <input ng-model="data.date" placeholder="set date" type="date" />
+                        </div>
+
+                        <md-radio-group placeholder="priority" ng-model="data.priority">
+                            <small>set priority</small>
+                            <md-radio-button value="normal">normal</md-radio-button>
+                            <md-radio-button value="high">high</md-radio-button>
+                        </md-radio-group>
+
+                        <section layout="row" layout-align="center center">
+                            <md-button class="md-raised md-default">creat task</md-button>
+                        </section>
+                    </div>
+
+                    <input type="reset" class="resetForm" />
+                </form>
+            </div>
+
+            <div ng-repeat="note in noteItems | filter:search" class="note-item {{note.priority}}">
+                <div class="note-head">
+                    <label class="note-status status-{{note.status}}">{{note.status}}</label>
+                    <label class="note-date">march 14</label>
+                </div>
+                <div class="note-body">{{note.content}}</div>
+                <div class="note-tools">
+                    <a href=""><span class="fa fa-times"></span></a>
+                </div>
+            </div>
+
+        </div>
+
+    </md-content>
+
+</section>
