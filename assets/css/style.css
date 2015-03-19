@@ -267,6 +267,21 @@
     text-align: right;
 }
 
+.note-item .note-tools a{
+    color: #c0392b;
+}
+
+.note-item .note-tools .fa-check-circle{
+    position: absolute;
+    color: #25944d;
+    left: 5px;
+    transition: all 0.3s ease, background-position 1ms;
+}
+
+.note-item .note-tools .fa-check-circle:hover{
+    font-size: 25px;
+}
+
 .modalView{
     position: absolute;
     z-index: 999;
