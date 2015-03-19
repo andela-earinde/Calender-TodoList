@@ -90,6 +90,7 @@ app.controller('HomeController', ['$rootScope', '$scope', 'listService', 'taskSe
                 $scope.noteItems = taskService.tasks($scope.currentList.name);
                 $scope.currentList.count = $scope.noteItems.length;
                 angular.element('.resetForm').click();
+                $scope.toggleNewTaskForm();
             }
 
         };

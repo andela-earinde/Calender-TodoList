@@ -30,6 +30,20 @@ app.directive('tasks', [ '$rootScope', 'taskService', function($rootScope,taskSe
                 broadcast();
             });
 
+            body.on('dblclick', function(el){
+                body.attr('contentEditable',true);
+            });
+
+            body.on('blur', function(){
+                if(body.attr('contentEditable')){
+                    var text = body.text();
+                    body.removeAttr('contentEditable');
+                    taskService.edit(listName,index,text);
+                    broadcast();
+                }
+
+            });
+
 
 
         }
