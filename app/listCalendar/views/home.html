@@ -38,7 +38,7 @@
     <md-content flex class="animated fadeIn taskBoard">
         <div class="top">
             <div class="left">
-                <strong><span class="fa fa-list-alt"></span> list name</strong> |
+                <strong><span class="fa fa-list-alt"></span> {{currentList.name | uppercase }}</strong> |
                 46 tasks
             </div>
 
@@ -61,13 +61,13 @@
         <div class="allTasks">
 
             <div class="modalView" ng-show="showNewTaskForm" ng-class="{'animated slideInRight': showNewTaskForm}">
-                <form ng-submit="newTaskSubmit(data)">
+                <form ng-submit="newTaskSubmit(data,$event)">
                     <div class="note-item">
                         <textarea ng-model="data.content" placeholder="write your shit here!"></textarea>
 
                         <div class="select">
                             <md-select ng-model="data.list" placeholder="choose a list to save to">
-                                <md-option ng-repeat="opt in Lists" ng-value="'opt'">{{opt}}</md-option>
+                                <md-option ng-repeat="opt in Lists" value="{{opt}}">{{opt}}</md-option>
                             </md-select>
                         </div>
 
@@ -84,7 +84,7 @@
                         </md-radio-group>
 
                         <section layout="row" layout-align="center center">
-                            <md-button class="md-raised md-default">creat task</md-button>
+                            <md-button class="md-raised md-default">create task</md-button>
                         </section>
                     </div>
 
