@@ -32,6 +32,12 @@ angular.module("taskApp")
             var list = lists[listname];
 
             list[index].content = text;
+        },
+
+        editUpdate: function(listname, index) {
+            var list = lists[listname];
+
+            list[index].status = "completed";
         }
     }	
 }]);
