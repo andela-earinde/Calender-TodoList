@@ -30,9 +30,12 @@ app.directive('tasks', [ '$rootScope', 'taskService', function($rootScope,taskSe
 
             del.on('click', function(e){
                 e.preventDefault();
-                taskService.remove(listName,index);
-                elem.hide();
-                broadcast();
+                var ask = confirm('seriously bro ?');
+                if(ask === true){
+                    taskService.remove(listName,index);
+                    elem.hide();
+                    broadcast();
+                }
             });
 
             body.on('dblclick', function(el){
