@@ -5,7 +5,7 @@ app.directive('tasks', [ '$rootScope', 'taskService', function($rootScope,taskSe
         templateUrl: 'app/tasks/templates/task-tpl.html',
         link: function(scope, elem, attr){
             scope.priority = attr.priority;
-            scope.date = attr.date;
+            scope.dateObj = attr.date;
             scope.content = attr.content;
             scope.status = attr.status;
             scope.listName = attr.listName;

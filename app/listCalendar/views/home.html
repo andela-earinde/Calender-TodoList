@@ -96,7 +96,7 @@
             <tasks ng-repeat="note in noteItems | filter:search"
                     priority="{{note.priority}}"
                     status="{{note.status}}"
-                    date="{{note.date}}"
+                    date="{{note.date | date}}"
                     list-name="{{note.list}}"
                     task-id="{{$index}}"
                     content="{{note.content}}"></tasks>
