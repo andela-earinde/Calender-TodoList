@@ -72,13 +72,18 @@
     display: block;
     padding: 8px 10px;
     color: #ecf0f1;
+    text-transform: capitalize;
 }
 
 .sideBar .listItem:hover,
 .sideBar .active{
-    background-color: #bdc3c7;
-    color: #d35400;
+    background-color: #111a23;
+    color: #ffff8d;
     cursor: pointer;
+}
+
+.sideBar .active .list-tools a{
+    color: #ffff8d !important;
 }
 
 .sideBar .listItem .list-name{
@@ -93,8 +98,23 @@
     float: right;
 }
 
+.sideBar .listItem .list-tools .fa-check{
+    display: none;
+}
+
+.sideBar .listItem .editOn{
+    background-color: #ecf0f1;
+    border-radius:5px;
+    -moz-border-radius: 5px;
+    color: #444444;
+    padding:3px;
+    padding-left: 8px;
+}
+
 .sideBar .listItem .list-tools a{
     color: #34495e;
+    display: inline-block;
+    margin-right: 5px;
 }
 
 .taskBoard{

@@ -26,16 +26,9 @@
         <div class="lists">
 
             <ul>
-
-                <li class="listItem" ng-repeat="item in Lists track by $index">
-                    <div class="list-name">{{item}}</div>
-                    <div class="list-tools">
-                    <a href=""><span class="fa fa-edit"></span></a>
-                    <a href=""><span class="fa fa-check"></span></a>
-                    <a href=""><span class="fa fa-trash"></span></a>
-                    </div>
-                    <div class="clear"></div>
-                </li>
+                <lists ng-repeat="item in Lists track by $index"
+                       list-index="{{$index}}"
+                       list-name="{{item}}"></lists>
             </ul>
 
         </div>
