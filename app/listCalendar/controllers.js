@@ -19,10 +19,13 @@ app.controller('HomeController', ['$rootScope', '$scope', 'listService', 'taskSe
 
         $scope.toggleNewTaskForm = function(){
             $scope.showNewTaskForm = !$scope.showNewTaskForm;
+<<<<<<< HEAD
         };
 
         $scope.showAlert = function(ev) {
 
+=======
+>>>>>>> develop
         };
 
         $scope.listFormSubmit = function(data, evt){
