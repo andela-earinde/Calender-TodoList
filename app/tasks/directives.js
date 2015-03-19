@@ -23,6 +23,11 @@ app.directive('tasks', [ '$rootScope', 'taskService', function($rootScope,taskSe
             var del = el.find('.fa-times');
             var body = el.find('.note-body');
 
+            check.on('click', function(e){
+                e.preventDefault();
+                //use list service to update
+            });
+
             del.on('click', function(e){
                 e.preventDefault();
                 taskService.remove(listName,index);
@@ -41,10 +46,7 @@ app.directive('tasks', [ '$rootScope', 'taskService', function($rootScope,taskSe
                     taskService.edit(listName,index,text);
                     broadcast();
                 }
-
             });
-
-
 
         }
     };
