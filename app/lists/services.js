@@ -1,4 +1,4 @@
-app.factory("listService", ["$localStorage",function($localStorage){
+app.factory("listService", ["$localStorage", "$rootScope",function($localStorage, $rootScope){
 
     var listsData = [];
     var list;
@@ -34,6 +34,7 @@ app.factory("listService", ["$localStorage",function($localStorage){
             for(var li in list) {
                 listsData.push(li);
             }
+            console.log(listsData);
         },
 
         edit: function(initName, newName) {
@@ -46,6 +47,8 @@ app.factory("listService", ["$localStorage",function($localStorage){
             for(var li in list) {
                 listsData.push(li);
             }
+            
+            $rootScope.$broadcast("valuesUpdated");
         }
     }
 }]);

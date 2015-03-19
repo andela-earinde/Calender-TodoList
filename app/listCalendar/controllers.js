@@ -11,6 +11,11 @@ app.controller('HomeController', ['$rootScope', '$scope', 'listService', 'taskSe
             $scope.listCount = $rootScope.Lists.length;
         };
 
+        $scope.$on('valuesUpdated', function() {
+            $scope.updateList();
+            console.log("crap");
+        });
+
         $scope.updateList();
 
         $scope.toggleNewListForm = function(){

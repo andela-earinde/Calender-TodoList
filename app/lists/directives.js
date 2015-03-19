@@ -35,7 +35,7 @@ app.directive('lists', ['listService', function(listService){
             save.on('click', function(e){
                 e.preventDefault();
                 var content = nameDiv.html();
-                if(/\w+\s\w+/.test(content)){
+                if(/\w*\s\w*/.test(content)){
                     alert('list name has to be one word, no spaces');
                 }else{
                     nameDiv.removeClass('editOn').removeAttr('contentEditable');
