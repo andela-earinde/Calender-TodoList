@@ -3,6 +3,7 @@ app.controller('HomeController', ['$rootScope', '$scope', 'listService', 'taskSe
 
         $scope.showNewListForm = false ;
         $scope.showNewTaskForm = false;
+        $scope.currentList = {} ;
         $scope.listCount = 0 ;
         $rootScope.Lists = [];
 
@@ -10,6 +11,16 @@ app.controller('HomeController', ['$rootScope', '$scope', 'listService', 'taskSe
             $rootScope.Lists = listService.lists();
             $scope.listCount = $rootScope.Lists.length;
         };
+
+        $scope.$on("event:ListServiceCalled", function(evt,arg){
+            $scope.listCount--;
+            $scope.$apply();
+        });
+
+        $scope.$on("event:ListSelected", function(event, data){
+            $scope.currentList.name = data.listName ;
+            $scope.$apply();
+        });
 
         $scope.updateList();
 
@@ -21,12 +32,11 @@ app.controller('HomeController', ['$rootScope', '$scope', 'listService', 'taskSe
             $scope.showNewTaskForm = !$scope.showNewTaskForm;
         };
 
-
         $scope.listFormSubmit = function(data, evt){
-            if(/\w+\s\w+/.test(data.name)){
+            if(/\w+\s\w+/.test(data.name) || data.name.length < 2){
                 $mdDialog.show(
                     $mdDialog.alert()
-                        .content('list name has to be one word, no spaces')
+                        .content('list name has to be a word, no spaces')
                         .ok('Got it!')
                         .targetEvent(evt)
                 );
@@ -38,15 +48,37 @@ app.controller('HomeController', ['$rootScope', '$scope', 'listService', 'taskSe
             }
         };
 
-        $scope.noteItems = [
-            {priority: 'normal', status: 'pending', content: "make the money don't let the money make you"},
-            {priority: 'high', status: 'completed',  content: 'Man know thyself, and be cautious of thy ways'},
-            {priority: 'normal', status: 'timedout',  content: 'nothing is given freely'},
-            {priority: 'high', status: 'pending',  content: 'a word is enough for the wise who wants to live'},
-            {priority: 'normal', status: 'completed',  content: 'nobody owes you shit, if you want something work for it period'},
-            {priority: 'high', status: 'timedout',  content: 'Lorem ipsum dolor sit amet, whatever dude'},
-            {priority: 'normal', status: 'pending',  content: 'Lorem ipsum dolor sit amet, whatever dude'}
-        ];
+        $scope.newTaskSubmit = function(data,evt){
+
+            var shout = function(msg){
+                $mdDialog.show(
+                    $mdDialog.alert()
+                        .content(msg)
+                        .ok('Got it!')
+                        .targetEvent(evt)
+                );
+            };
+
+
+            if(!data.content || data.content.length < 2){
+                shout('list note must contain text');
+            }
+            else if(!data.list){
+                shout('you have to choose a list');
+            }
+
+            else if(data.date == null){
+                shout('you have to set date');
+            }
+            else if(!data.priority){
+                shout('you have to set priority');
+            }else{
+                listService.add(data.list,data);
+            }
+
+        };
+
+        $scope.noteItems = [];
 
         /*
          $scope.$on('$viewContentLoaded', function(){

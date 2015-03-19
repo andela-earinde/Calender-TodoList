@@ -1,4 +1,4 @@
-app.factory("listService", ["$localStorage",function($localStorage){
+app.factory("listService", ["$localStorage", function($localStorage){
 
     var listsData = [];
     var list;
@@ -8,6 +8,7 @@ app.factory("listService", ["$localStorage",function($localStorage){
     else {
         list = $localStorage.lists = {};
     }
+
     
     return {
 
@@ -28,24 +29,42 @@ app.factory("listService", ["$localStorage",function($localStorage){
         },
 
         remove: function(name) {
-            listsData = [];
-            delete $localStorage.lists[name];
-            listsData = [];
-            for(var li in list) {
-                listsData.push(li);
+            var oldData = JSON.parse(localStorage.getItem('ngStorage-lists'));
+            if(oldData.hasOwnProperty(name)){
+                delete oldData[name] ;
+                localStorage.setItem('ngStorage-lists',JSON.stringify(oldData));
+                //$localStorage.lists[oldData];
             }
+
+            //listsData = [];
+            //delete $localStorage.lists[name];
+            //listsData = [];
+            //for(var li in list) {
+            //    listsData.push(li);
+            //}
         },
 
         edit: function(initName, newName) {
-            listsData = [];
-            Object.defineProperty($localStorage.lists, newName,
-                Object.getOwnPropertyDescriptor($localStorage.lists, initName));
-
-            delete $localStorage.lists[initName];
-
-            for(var li in list) {
-                listsData.push(li);
+            var oldData = JSON.parse(localStorage.getItem('ngStorage-lists'));
+            //var oldData = $localStorage.lists
+            if(oldData.hasOwnProperty(initName)){
+                oldData[newName] = oldData[initName] ;
+                delete oldData[initName] ;
+                localStorage.setItem('ngStorage-lists',JSON.stringify(oldData));
+                //$localStorage.lists[oldData];
             }
+
+            //////////////////////////////////
+            //listsData = [];
+            //Object.defineProperty(list, newName,
+            //    Object.getOwnPropertyDescriptor(list, initName));
+            //
+            //delete list[initName];
+            //
+            //for(var li in list) {
+            //    listsData.push(li);
+            //}
+            //console.log(listsData);
         }
     }
 }]);

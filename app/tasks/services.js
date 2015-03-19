@@ -2,7 +2,7 @@ angular.module("taskApp")
     .factory("taskService", ["$localStorage", function($localStorage){
 
 	var listTasks = [];
-	var lists = $localStorage.lists
+	var lists = $localStorage.lists;
 
     return {
 

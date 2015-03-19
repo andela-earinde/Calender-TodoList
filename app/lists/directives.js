@@ -1,14 +1,14 @@
 
-app.directive('lists', ['listService', function(listService){
+app.directive('lists', ['listService', '$rootScope', '$mdDialog',
+    function(listService,$rootScope,$mdDialog){
 
     return{
         restrict: 'E',
         replace: false,
-        //scope: {},
         templateUrl: 'app/lists/templates/list-tpl.html',
         link: function(scope, element, attributes){
             scope.listName = attributes.listName;
-            var oldname;
+            var oldName = attributes.listName;
             scope.listIndex = attributes.listIndex ;
 
             var el = element.find('.listItem');
@@ -21,7 +21,7 @@ app.directive('lists', ['listService', function(listService){
             element.on('click', function(){
                 angular.element('.listItem').removeClass('active');
                 el.addClass('active');
-                oldname = attributes.listName;
+                $rootScope.$broadcast('event:ListSelected', {listName: oldName} );
             });
 
             //Edit
@@ -32,15 +32,31 @@ app.directive('lists', ['listService', function(listService){
             });
 
             // Save
-            save.on('click', function(e){
-                e.preventDefault();
-                var content = nameDiv.html();
-                if(/\w+\s\w+/.test(content)){
-                    alert('list name has to be one word, no spaces');
+            save.on('click', function(evt){
+                evt.preventDefault();
+                var content = nameDiv.text();
+                if(/\w+\s\w+/.test(content) || !/\S/.exec(content)){
+                    $mdDialog.show(
+                        $mdDialog.alert()
+                            .content('list name has to be a word, no spaces')
+                            .ok('Got it!')
+                            .targetEvent(evt)
+                    );
                 }else{
                     nameDiv.removeClass('editOn').removeAttr('contentEditable');
                     save.hide(); edit.show(); del.show();
-                    listService.edit(oldname,content);
+                    listService.edit(oldName,content);
+                }
+            });
+
+            // Delete
+            del.on('click', function(e){
+                e.preventDefault();
+                var ask = confirm('sure you want to delete this list ?');
+                if(ask === true){
+                    listService.remove(oldName);
+                    el.hide();
+                    $rootScope.$broadcast("event:ListServiceCalled");
                 }
             });
         }
