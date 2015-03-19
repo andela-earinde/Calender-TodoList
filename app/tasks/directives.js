@@ -26,6 +26,8 @@ app.directive('tasks', [ '$rootScope', 'taskService', function($rootScope,taskSe
             check.on('click', function(e){
                 e.preventDefault();
                 //use list service to update
+                taskService.editUpdate(listName, index);
+                broadcast();
             });
 
             del.on('click', function(e){
