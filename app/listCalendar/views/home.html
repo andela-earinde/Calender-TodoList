@@ -92,7 +92,7 @@
                 </form>
             </div>
 
-            <tasks ng-repeat="note in noteItems track | filter:search"
+            <tasks ng-repeat="note in noteItems | filter:search"
                     priority="{{note.priority}}"
                     status="{{note.status}}"
                     date="{{note.date | date}}"

@@ -12,12 +12,18 @@ angular.module("taskApp")
     	}, 
 
     	add: function(listname, task) {
+            task["id"] = Date();
     		lists[listname].push(task);
     		listTasks = lists[listname];
     	},
         
-        remove: function(listname, index) {
-            
+        remove: function(listname, id) {
+            var lists = $localStorage.lists[listname];
+            for(var i = 0; i < lists.lenght; i++) {
+                if(id === lists[i].id) {
+                    lists.splice(i, 0);
+                }
+            }
         },
 
         edit: function(listname, index, text) {
