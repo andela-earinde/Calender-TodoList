@@ -136,6 +136,10 @@
     float: left;
 }
 
+.taskBoard .top .left strong{
+    text-transform: capitalize;
+}
+
 .taskBoard .top .right{
     float: right;
     width: 600px;

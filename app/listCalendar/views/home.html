@@ -38,8 +38,8 @@
     <md-content flex class="animated fadeIn taskBoard">
         <div class="top">
             <div class="left">
-                <strong><span class="fa fa-list-alt"></span> {{currentList.name | uppercase }}</strong> |
-                {{currentList.count}} tasks
+                <strong><span class="fa fa-list-alt"></span> {{currentList.name}}</strong> |
+                {{currentList.count}} task(s)
             </div>
 
             <div class="right">
@@ -91,7 +91,6 @@
                     <input type="reset" class="resetForm" />
                 </form>
             </div>
-
 
             <tasks ng-repeat="note in noteItems | filter:search"
                     priority="{{note.priority}}"
