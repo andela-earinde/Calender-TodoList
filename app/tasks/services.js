@@ -27,16 +27,26 @@ angular.module("taskApp")
             }
         },
 
-        edit: function(listname, index, text) {
+        edit: function(listname, id, text) {
             var list = lists[listname];
 
-            list[index].content = text;
+            for(var i = 0; i < list.length; i++) {
+                if(id === list[i].id) {
+                    list[i].content = text;
+                }
+            }
         },
 
-        editUpdate: function(listname, index) {
+        editUpdate: function(listname, id) {
             var list = lists[listname];
 
-            list[index].status = "completed";
+            for(var i = 0; i < list.length; i++) {
+                if(id === list[i].id) {
+                    list[i].status = "completed";
+                }
+            }
+
+            //list[index].status = "completed";
         }
     }	
 }]);
