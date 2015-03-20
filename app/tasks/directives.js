@@ -38,8 +38,8 @@ app.directive('tasks', [ '$rootScope', 'taskService', function($rootScope,taskSe
                     .text('completed')
                     .removeClass('status-'+attr.status)
                     .addClass('status-completed');
-                el.addClass('animated rubberBand').delay(1000).fadeIn('fast', function(){
-                    el.removeClass('animated rubberBand');
+                el.addClass('animated hinge').delay(1000).fadeIn('fast', function(){
+                    el.removeClass('animated hinge');
                     broadcast();
                 });
 
@@ -50,7 +50,7 @@ app.directive('tasks', [ '$rootScope', 'taskService', function($rootScope,taskSe
                 var ask = confirm('seriously ?');
                 if(ask === true){
                     taskService.remove(listName,index);
-                    el.addClass('animated fadeOutDown').delay(1000).fadeOut('fast', function(){
+                    el.addClass('animated hinge').delay(1000).fadeOut('fast', function(){
                         broadcast();
                     });
                 }
