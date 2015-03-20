@@ -38,8 +38,8 @@ app.directive('tasks', [ '$rootScope', 'taskService', function($rootScope,taskSe
                     .text('completed')
                     .removeClass('status-'+attr.status)
                     .addClass('status-completed');
-                el.addClass('animated hinge').delay(1000).fadeIn('fast', function(){
-                    el.removeClass('animated hinge');
+                el.addClass('animated tada').delay(1000).fadeIn('fast', function(){
+                    el.removeClass('animated tada');
                     broadcast();
                 });
 
