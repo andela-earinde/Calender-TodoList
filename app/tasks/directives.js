@@ -10,10 +10,11 @@ app.directive('tasks', [ '$rootScope', 'taskService', function($rootScope,taskSe
             scope.status = attr.status;
             scope.listName = attr.listName;
             scope.taskId = attr.taskId;
-            scope.completed = false;
 
-            if(attr.status != 'completed'){
-                scope.completed = true;
+            var el = elem.find('.note-item');
+
+            if(attr.status == 'completed'){
+                el.find('.fa-check-circle').hide();
             }
 
             var listName = attr.listName;
@@ -23,7 +24,7 @@ app.directive('tasks', [ '$rootScope', 'taskService', function($rootScope,taskSe
                 $rootScope.$broadcast('event:ListSelected',{listName: listName});
             };
 
-            var el = elem.find('.note-item');
+
             var check = el.find('.fa-check-circle');
             var del = el.find('.fa-times');
             var body = el.find('.note-body');
@@ -32,27 +33,38 @@ app.directive('tasks', [ '$rootScope', 'taskService', function($rootScope,taskSe
             check.on('click', function(e){
                 e.preventDefault();
                 taskService.editUpdate(listName,index);
-                statusBar.text("completed");
                 check.hide();
-                broadcast();
+                el.find('.note-status')
+                    .text('completed')
+                    .removeClass('status-'+attr.status)
+                    .addClass('status-completed');
+                el.addClass('animated rubberBand').delay(1000).fadeIn('fast', function(){
+                    el.removeClass('animated rubberBand');
+                    broadcast();
+                });
+
             });
 
             del.on('click', function(e){
                 e.preventDefault();
-                var ask = confirm('seriously bro ?');
+                var ask = confirm('seriously ?');
                 if(ask === true){
                     taskService.remove(listName,index);
-                    elem.hide();
-                    broadcast();
+                    el.addClass('animated fadeOutDown').delay(1000).fadeOut('fast', function(){
+                        broadcast();
+                    });
                 }
             });
 
             body.on('dblclick', function(el){
                 body.attr('contentEditable',true);
+                body.focus();
+                body.addClass('animated pulse');
             });
 
             body.on('blur', function(){
                 if(body.attr('contentEditable')){
+                    body.removeClass('animated pulse');
                     var text = body.text();
                     body.removeAttr('contentEditable');
                     taskService.edit(listName,index,text);

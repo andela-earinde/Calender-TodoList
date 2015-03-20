@@ -1,7 +1,7 @@
 app.controller('HomeController', ['$rootScope', '$scope', 'listService', 'taskService','$mdDialog',
     function($rootScope, $scope, listService, taskService,$mdDialog){
 
-        $scope.showNewListForm = false ;
+        $scope.showNewListForm = false;
         $scope.showNewTaskForm = false;
         $scope.currentList = {} ;
         $scope.listCount = 0 ;
@@ -94,23 +94,6 @@ app.controller('HomeController', ['$rootScope', '$scope', 'listService', 'taskSe
                 $scope.toggleNewTaskForm();
             }
 
-        };
-
-        //task functions for tasks
-        $scope.getTasks = function(listName, task) {
-            taskService.tasks(listName, task);
-        };
-
-        $scope.addTasks = function(listName, task) {
-            taskService.add(listName, task);
-        };
-
-        $scope.deleteTask = function(listName, index) {
-            taskService.remove(listName, index);
-        };
-
-        $scope.editTask = function(listName, index, text) {
-            taskService.edit(listName, index, text);
         };
 
     }]);
