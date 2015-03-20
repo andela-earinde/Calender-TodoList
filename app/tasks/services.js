@@ -21,7 +21,7 @@ angular.module("taskApp")
             var lists = $localStorage.lists[listname];
             for(var i = 0; i < lists.lenght; i++) {
                 if(id === lists[i].id) {
-                    lists.splice(i, 0);
+                    lists.splice(i, 1);
                 }
             }
         },
