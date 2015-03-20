@@ -17,15 +17,7 @@ angular.module("taskApp")
     	},
         
         remove: function(listname, index) {
-            var list = lists[listname];
-
-            if(list.length === 1 || index === 0) {
-                list.shift();
-                listTasks = list
-            }
-            else {
-                 list.splice(index, index);  
-            }
+            
         },
 
         edit: function(listname, index, text) {
