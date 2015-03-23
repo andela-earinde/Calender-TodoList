@@ -26,16 +26,9 @@
         <div class="lists">
 
             <ul>
-
-                <li class="listItem" ng-repeat="item in Lists track by $index">
-                    <div class="list-name">{{item}}</div>
-                    <div class="list-tools">
-                    <a href=""><span class="fa fa-edit"></span></a>
-                    <a href=""><span class="fa fa-check"></span></a>
-                    <a href=""><span class="fa fa-trash"></span></a>
-                    </div>
-                    <div class="clear"></div>
-                </li>
+                <lists ng-repeat="item in Lists track by $index"
+                       list-index="{{$index}}"
+                       list-name="{{item}}"></lists>
             </ul>
 
         </div>
@@ -45,8 +38,8 @@
     <md-content flex class="animated fadeIn taskBoard">
         <div class="top">
             <div class="left">
-                <strong><span class="fa fa-list-alt"></span> list name</strong> |
-                46 tasks
+                <strong><span class="fa fa-list-alt"></span> {{currentList.name}}</strong> |
+                {{currentList.count}} task(s)
             </div>
 
             <div class="right">
@@ -68,13 +61,13 @@
         <div class="allTasks">
 
             <div class="modalView" ng-show="showNewTaskForm" ng-class="{'animated slideInRight': showNewTaskForm}">
-                <form ng-submit="newTaskSubmit(data)">
+                <form ng-submit="newTaskSubmit(data,$event)">
                     <div class="note-item">
                         <textarea ng-model="data.content" placeholder="write your shit here!"></textarea>
 
                         <div class="select">
                             <md-select ng-model="data.list" placeholder="choose a list to save to">
-                                <md-option ng-repeat="opt in Lists" ng-value="'opt'">{{opt}}</md-option>
+                                <md-option ng-repeat="opt in Lists" value="{{opt}}">{{opt}}</md-option>
                             </md-select>
                         </div>
 
@@ -91,7 +84,7 @@
                         </md-radio-group>
 
                         <section layout="row" layout-align="center center">
-                            <md-button class="md-raised md-default">creat task</md-button>
+                            <md-button class="md-raised md-default">create task</md-button>
                         </section>
                     </div>
 
@@ -99,16 +92,13 @@
                 </form>
             </div>
 
-            <div ng-repeat="note in noteItems | filter:search" class="note-item {{note.priority}}">
-                <div class="note-head">
-                    <label class="note-status status-{{note.status}}">{{note.status}}</label>
-                    <label class="note-date">march 14</label>
-                </div>
-                <div class="note-body">{{note.content}}</div>
-                <div class="note-tools">
-                    <a href=""><span class="fa fa-times"></span></a>
-                </div>
-            </div>
+            <tasks ng-repeat="note in noteItems | filter:search"
+                    priority="{{note.priority}}"
+                    status="{{note.status}}"
+                    date="{{note.date | date}}"
+                    list-name="{{note.list}}"
+                    task-id="{{note.id}}"
+                    content="{{note.content}}"></tasks>
 
         </div>
 

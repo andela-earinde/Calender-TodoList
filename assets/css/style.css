@@ -72,13 +72,18 @@
     display: block;
     padding: 8px 10px;
     color: #ecf0f1;
+    text-transform: capitalize;
 }
 
 .sideBar .listItem:hover,
 .sideBar .active{
-    background-color: #bdc3c7;
-    color: #d35400;
+    background-color: #111a23;
+    color: #ffff8d;
     cursor: pointer;
+}
+
+.sideBar .active .list-tools a{
+    color: #ffff8d !important;
 }
 
 .sideBar .listItem .list-name{
@@ -93,8 +98,23 @@
     float: right;
 }
 
+.sideBar .listItem .list-tools .fa-check{
+    display: none;
+}
+
+.sideBar .listItem .editOn{
+    background-color: #ecf0f1;
+    border-radius:5px;
+    -moz-border-radius: 5px;
+    color: #444444;
+    padding:3px;
+    padding-left: 8px;
+}
+
 .sideBar .listItem .list-tools a{
     color: #34495e;
+    display: inline-block;
+    margin-right: 5px;
 }
 
 .taskBoard{
@@ -114,6 +134,10 @@
 .taskBoard .top .left{
     margin-top: 10px;
     float: left;
+}
+
+.taskBoard .top .left strong{
+    text-transform: capitalize;
 }
 
 .taskBoard .top .right{
@@ -245,6 +269,24 @@
 
 .note-item .note-tools{
     text-align: right;
+}
+
+.note-item .note-tools a{
+    color: #c0392b;
+    transition: all 0.3s ease, background-position 1ms;
+}
+
+
+.note-item .note-tools .fa-check-circle{
+    position: absolute;
+    color: #25944d;
+    left: 5px;
+    bottom: 5px;
+    transition: all 0.3s ease, background-position 1ms;
+}
+
+.note-item .note-tools .fa-check-circle:hover{
+    font-size: 25px;
 }
 
 .modalView{
